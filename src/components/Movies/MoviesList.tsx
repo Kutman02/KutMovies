@@ -1,29 +1,50 @@
+import React from 'react';
 import LoadingMovies from '../Movies/LoadingMovies';
 import MoviesCards from './MoviesCards';
-
-import { useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
 import FavoriteMoviesList from './FavoriteMoviesList';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { useLocation } from 'react-router-dom';
 
 function MoviesList() {
   const path = useLocation();
-  let moviesToShow = [];
 
   const { films, status, filteredMovies, filteredMoviesCategoryes } = useSelector(
-    (store) => store.movies,
+    (store: RootState) => store.movies,
   );
-  const { favoritesMovies } = useSelector((store) => store.favorites);
+
+  const { favoritesMovies } = useSelector((store: RootState) => store.favorites);
+
+  // Преобразуем id в строку, чтобы соответствовать типу Movie
+  const normalizeId = (arr: any[]) => arr.map((film) => ({ ...film, id: String(film.id) }));
+
+  const normalizedData = {
+    films: normalizeId(films),
+    filteredMovies: normalizeId(filteredMovies),
+    filteredMoviesCategoryes: normalizeId(filteredMoviesCategoryes),
+    favoritesMovies: normalizeId(favoritesMovies),
+  };
 
   return (
     <div id="movies" className="movies anchor">
       {path.pathname === '/favorites' ? (
         <FavoriteMoviesList
-          favorites={{ favoritesMovies, filteredMovies, filteredMoviesCategoryes }}
+          favorites={{
+            favoritesMovies: normalizedData.favoritesMovies,
+            filteredMovies: normalizedData.filteredMovies,
+            filteredMoviesCategoryes: normalizedData.filteredMoviesCategoryes,
+          }}
         />
       ) : status === 'loading' ? (
         <LoadingMovies />
       ) : (
-        <MoviesCards films={{ films, filteredMovies, filteredMoviesCategoryes }} />
+        <MoviesCards
+          films={{
+            films: normalizedData.films,
+            filteredMovies: normalizedData.filteredMovies,
+            filteredMoviesCategoryes: normalizedData.filteredMoviesCategoryes,
+          }}
+        />
       )}
     </div>
   );

@@ -1,10 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface Film {
-  id: string;
+  id: string | number; // идентификатор фильма
   title?: string; // можно добавить опциональные поля по необходимости
   category?: string[];
-  // другие поля...
+  description: string; // ✅ добавить
+  categoryes: string[] | number; // ✅ добавить
+  aboutInfo: string[];
+  trailerUrl: string;
+  imageUrl?: string; // добавлено для совместимости с MoviesCard
+  
 }
 
 interface FavoritesState {

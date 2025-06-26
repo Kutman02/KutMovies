@@ -1,6 +1,14 @@
 import ContentLoader from 'react-content-loader';
 
-const SceletonFilm = (props) => (
+interface SceletonFilmProps {
+  // Опишите здесь свойства, которые ожидает компонент
+  // Например:
+  width?: number;
+  height?: number;
+  // Добавьте другие свойства по необходимости
+}
+
+const SceletonFilm: React.FC<SceletonFilmProps> = (props) => (
   <ContentLoader
     speed={1}
     width={400}

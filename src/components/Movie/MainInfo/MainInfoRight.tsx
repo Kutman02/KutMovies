@@ -1,5 +1,15 @@
-function MainInfoRight(props) {
-  const dataFilm = props.filmInfo.film;
+interface Film {
+  aboutInfo: string[];
+}
+
+interface MainInfoRightProps {
+  filmInfo: {
+    film: Film;
+  };
+}
+
+function MainInfoRight({ filmInfo }: MainInfoRightProps) {
+  const dataFilm = filmInfo.film;
 
   return (
     <div className="main__info-right">
@@ -25,4 +35,5 @@ function MainInfoRight(props) {
     </div>
   );
 }
+
 export default MainInfoRight;

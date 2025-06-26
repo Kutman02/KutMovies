@@ -8,10 +8,11 @@ import Favorites from './Pages/Favorites';
 import Error from './Pages/404';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchMovies } from './Redux/slices/moviesSlice';
+import { fetchMovies } from './redux/slices/moviesSlice';
+import { useAppDispatch } from './redux/hooks';
 
 function AppMain() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(fetchMovies());

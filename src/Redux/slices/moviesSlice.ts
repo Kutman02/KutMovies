@@ -4,10 +4,14 @@ import axios from 'axios';
 // Опиши типы для фильма и состояния
 
 interface Film {
-  id: string;
+  id: string | number;
   title: string;
   category: string[];
-  // Добавь другие поля из объекта фильма, если есть
+  description: string; // ✅ добавить
+  categoryes: string[] | number; // ✅ добавить
+  aboutInfo: string[]; // ✅ добавить
+  trailerUrl: string;
+  imageUrl?: string; // добавлено для совместимости с MoviesCard
 }
 
 interface SearchFilmState {

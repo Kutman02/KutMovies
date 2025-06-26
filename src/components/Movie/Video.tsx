@@ -1,9 +1,10 @@
 import { useSelector } from 'react-redux';
 import { searchParamsYoutube } from '../../tools/searchParamInYoutube';
 import SceletonVideo from '../Sceletons/SceletonVideo';
+import type { RootState } from '../../redux/store';
 
 function Video() {
-  const { searchFilm, status } = useSelector((store) => store.movies);
+  const { searchFilm, status } = useSelector((store: RootState) => store.movies);
 
   if (status === 'loading') {
     return (
@@ -15,6 +16,7 @@ function Video() {
 
   const trailerUrl = searchFilm?.film?.trailerUrl;
   const videoUrl = trailerUrl ? searchParamsYoutube(trailerUrl) : '';
+
   return (
     <>
       <iframe
@@ -28,4 +30,5 @@ function Video() {
     </>
   );
 }
+
 export default Video;

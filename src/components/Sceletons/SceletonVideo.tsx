@@ -1,6 +1,14 @@
 import ContentLoader from 'react-content-loader';
 
-const SceletonVideo = (props) => (
+interface SceletonVideoProps {
+  // Опишите здесь свойства, которые ожидает компонент
+  // Например:
+  width?: number;
+  height?: number;
+  // Добавьте другие свойства по необходимости
+}
+
+const SceletonVideo: React.FC<SceletonVideoProps> = (props) => (
   <ContentLoader
     speed={2}
     width={1217}

@@ -1,25 +1,27 @@
 import React from 'react';
-import {useDispatch, useSelector } from 'react-redux';
-import { searchCategoryesFilms } from '../../Redux/slices/moviesSlice';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { searchCategoryesFilms } from '../../redux/slices/moviesSlice';
 
 function FilterButtons() {
-  const dispatch = useDispatch();
-  const { filmsCategory } = useSelector((store) => store.movies);
+  const dispatch = useAppDispatch();
+  const filmsCategory = useAppSelector((store) => store.movies.filmsCategory);
 
-  const [active, changeActive] = React.useState('All');
+  const [active, changeActive] = React.useState<string>('All');
 
-  function categoryButtonLogic(value) {
+  function categoryButtonLogic(value: string) {
     changeActive(value);
     dispatch(searchCategoryesFilms(value));
   }
 
   return (
     <div className="filter__buttons">
-      <button onClick={() => categoryButtonLogic('All')} className={active === 'All' ? 'active' : ''}>
+      <button
+        onClick={() => categoryButtonLogic('All')}
+        className={active === 'All' ? 'active' : ''}>
         All
       </button>
 
-      {filmsCategory.map((value, index) => (
+      {filmsCategory.map((value: string, index: number) => (
         <button
           key={index}
           onClick={() => categoryButtonLogic(value)}
@@ -30,4 +32,5 @@ function FilterButtons() {
     </div>
   );
 }
+
 export default FilterButtons;
