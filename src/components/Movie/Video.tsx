@@ -8,7 +8,7 @@ function Video() {
 
   if (status === 'loading') {
     return (
-      <div className="video-wrapper">
+      <div className="flex justify-center items-center w-full h-[350px] md:h-[500px] bg-gray-100 rounded-xl shadow animate-pulse">
         <SceletonVideo />
       </div>
     );
@@ -18,16 +18,17 @@ function Video() {
   const videoUrl = trailerUrl ? searchParamsYoutube(trailerUrl) : '';
 
   return (
-    <>
-      <iframe
-        width="1217"
-        height="700"
-        src={`https://www.youtube.com/embed/${videoUrl}`}
-        title="YouTube video player"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowFullScreen></iframe>
-    </>
+    <div className="w-full flex justify-center items-center py-4">
+      <div className="w-full max-w-4xl aspect-video rounded-xl overflow-hidden shadow-lg bg-black">
+        <iframe
+          className="w-full h-full"
+          src={`https://www.youtube.com/embed/${videoUrl}`}
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen></iframe>
+      </div>
+    </div>
   );
 }
 

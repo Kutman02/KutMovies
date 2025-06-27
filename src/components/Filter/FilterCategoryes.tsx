@@ -3,23 +3,32 @@ import { useState } from 'react';
 function FilterCategoryes() {
   const [status, changeStatus] = useState('Popular');
 
-  let filter_categoryes = ['Popular', 'Novelty', 'Featured', 'Short films'];
+  const filter_categoryes = ['Popular', 'Novelty', 'Featured', 'Short films'];
 
   return (
-    <div id="categoryes" className="filter__categoryes anchor">
-      <div className="filter__categoryes-flex">
-        {filter_categoryes.map((categorye, index) => (
-          <div
+    <div
+      id="categoryes"
+      className="w-full py-4 px-2 bg-white dark:bg-gray-900 rounded-xl shadow-md">
+      <div className="flex flex-wrap gap-3 justify-center">
+        {filter_categoryes.map((categorye) => (
+          <button
+            type="button"
             onClick={() => changeStatus(categorye)}
-            className={`filter__categoryes-item ${categorye === status ? 'active-category' : ''}`}
-            key={index}>
-            <p>{categorye}</p>
-            <span></span>
-          </div>
+            className={`px-5 py-2 rounded-full font-semibold transition 
+              ${
+                categorye === status
+                  ? 'bg-blue-600 text-white shadow-lg scale-105'
+                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-blue-900'
+              }
+              focus:outline-none focus:ring-2 focus:ring-blue-400
+            `}
+            key={categorye}>
+            {categorye}
+          </button>
         ))}
       </div>
-      <span></span>
     </div>
   );
 }
+
 export default FilterCategoryes;

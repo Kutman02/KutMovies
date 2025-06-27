@@ -1,3 +1,5 @@
+import React from 'react';
+
 interface Film {
   aboutInfo: string[];
 }
@@ -11,28 +13,22 @@ interface MainInfoRightProps {
 function MainInfoRight({ filmInfo }: MainInfoRightProps) {
   const dataFilm = filmInfo.film;
 
+  const labels = ['Type', 'Director', 'Date aired', 'Duration'];
+
   return (
-    <div className="main__info-right">
-      <p>About</p>
-      <div className="main__info-rigth-info">
-        <div>
-          <p>Type:</p>
-          <p>{dataFilm.aboutInfo[0]}</p>
-        </div>
-        <div>
-          <p>Director:</p>
-          <p>{dataFilm.aboutInfo[1]}</p>
-        </div>
-        <div>
-          <p>Date aired:</p>
-          <p>{dataFilm.aboutInfo[2]}</p>
-        </div>
-        <div>
-          <p>Duration:</p>
-          <p>{dataFilm.aboutInfo[3]}</p>
-        </div>
+    <section className="w-full max-w-md mx-auto bg-white/80 dark:bg-gray-900/80 rounded-xl shadow-lg p-6 flex flex-col gap-4">
+      <h2 className="text-xl font-bold text-gray-800 dark:text-white mb-2">About</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {labels.map((label, idx) => (
+          <div key={label} className="flex flex-col gap-1">
+            <span className="text-sm text-gray-500 dark:text-gray-400">{label}:</span>
+            <span className="text-base font-medium text-gray-900 dark:text-gray-100">
+              {dataFilm.aboutInfo[idx] || '-'}
+            </span>
+          </div>
+        ))}
       </div>
-    </div>
+    </section>
   );
 }
 

@@ -10,6 +10,11 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchMovies } from './redux/slices/moviesSlice';
 import { useAppDispatch } from './redux/hooks';
+import MobileHeader from './components/layout/MobileHeader';
+import Movies from './Pages/Movies';
+import Faq from './Pages/Faq';
+import Help from './Pages/Help';
+import Account from './Pages/Account';
 
 function AppMain() {
   const dispatch = useAppDispatch();
@@ -21,11 +26,18 @@ function AppMain() {
   return (
     <>
       <BrowserRouter>
-        <Header />|
+        <Header />
+        <MobileHeader />
+        {/* Main content area */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/movie/:id" element={<Movie />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/Faq" element={<Faq />} />
+          <Route path="/help" element={<Help />} />
+          <Route path="/account" element={<Account />} />
+          {/* Fallback route for 404 errors */}
           <Route path="*" element={<Error />} />
         </Routes>
         <Footer />

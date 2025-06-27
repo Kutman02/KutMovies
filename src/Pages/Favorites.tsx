@@ -1,20 +1,32 @@
 import Banner from '../components/Favorites/Banner';
-
 import FavoriteList from '../components/Favorites/FavoriteList';
 import Filter from '../components/Filter/Filter';
 import MoviesList from '../components/Movies/MoviesList';
 import MoviesScroll from '../components/Movies/MoviesScroll';
+
 function Favorites() {
   return (
     <>
       <Banner />
-      <div className="container">
-        <Filter />
-        <div className="favorites_movies">
-          <FavoriteList />
-          <MoviesList />
+      <div className="container mx-auto px-4 py-8 min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-100">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
+          <h1 className="text-3xl font-bold text-gray-900">Избранное</h1>
+          <Filter />
         </div>
-        <MoviesScroll />
+        <div className="flex flex-col lg:flex-row gap-8">
+          <div className="w-full lg:w-2/3">
+            <MoviesList />
+          </div>
+          <aside className="hidden lg:block w-full lg:w-1/3 bg-white rounded-xl shadow-lg p-6">
+            {/* Здесь можно добавить виджеты или рекомендации */}
+            <h2 className="text-xl font-semibold mb-4">Рекомендации</h2>
+            <FavoriteList />
+          </aside>
+        </div>
+        <div className="mt-16">
+          <h2 className="text-2xl font-semibold mb-6 text-gray-800">Похожие фильмы</h2>
+          <MoviesScroll />
+        </div>
       </div>
     </>
   );

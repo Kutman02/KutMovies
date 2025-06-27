@@ -4,67 +4,50 @@ import heart from '../../assets/icons/heart.png';
 
 export default function Header() {
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 shadow-lg border-b border-gray-700">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
-        <Link className="flex items-center gap-3 group" to="/">
+    <header className="hidden md:block fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200">
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-8 py-4">
+        {/* Логотип */}
+        <Link to="/" className="flex items-center gap-4 group">
           <img
             src={logo}
-            alt="logo"
-            className="w-12 h-12 rounded-lg shadow-md transition-transform group-hover:scale-105"
+            alt="логотип"
+            className="w-12 h-12 rounded-xl shadow-md group-hover:scale-110 transition-transform duration-300"
           />
-          <div className="flex flex-col leading-tight">
-            <p className="text-xl font-extrabold text-white tracking-widest">REACT</p>
-            <p className="text-sm font-semibold text-indigo-400 tracking-widest">CINEMA</p>
+          <div className="flex flex-col leading-tight select-none">
+            <p className="text-2xl font-extrabold text-gray-900 tracking-widest">KUTMOVIES</p>
+            <p className="text-xs text-indigo-600 uppercase tracking-wide">Смотри везде</p>
           </div>
         </Link>
-        <nav>
-          <ul className="flex gap-6 md:gap-10 items-center">
-            <li>
-              <Link
-                to="/"
-                className="text-gray-200 hover:text-indigo-400 transition-colors font-medium text-lg">
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/favorites"
-                className="text-gray-200 hover:text-indigo-400 transition-colors font-medium text-lg">
-                Favorites
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/movie"
-                className="text-gray-200 hover:text-indigo-400 transition-colors font-medium text-lg">
-                Movies
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="#categoryes"
-                className="text-gray-200 hover:text-indigo-400 transition-colors font-medium text-lg">
-                FAQ
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="#categoryes"
-                className="text-gray-200 hover:text-indigo-400 transition-colors font-medium text-lg">
-                Help
-              </Link>
-            </li>
-          </ul>
+
+        {/* Навигация */}
+        <nav className="flex gap-12 items-center">
+          {[
+            ['/', 'Главная'],
+            ['/movies', 'Фильмы'],
+            ['/favorites', 'Мой список'],
+            ['/faq', 'Вопросы'],
+            ['/help', 'Поддержка'],
+          ].map(([href, label]) => (
+            <Link
+              key={href}
+              to={href}
+              className="relative text-gray-700 text-sm font-semibold hover:text-indigo-600 transition duration-300 before:absolute before:-bottom-1 before:left-0 before:h-[2px] before:w-0 before:bg-indigo-600 hover:before:w-full before:transition-all before:duration-300">
+              {label}
+            </Link>
+          ))}
         </nav>
+
+        {/* Действия */}
         <div className="flex items-center gap-6">
-          <div className="flex items-center gap-2 bg-gray-800 px-3 py-1 rounded-full shadow hover:bg-indigo-700 transition-colors cursor-pointer">
-            <img src={heart} alt="favorites" className="w-5 h-5" />
-            <p className="text-indigo-400 font-bold text-lg">0</p>
+          <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500 hover:bg-indigo-600 transition-all cursor-pointer select-none shadow-lg border-2 border-indigo-700">
+            <img src={heart} alt="избранное" className="w-6 h-6" />
+            <span className="text-white font-bold text-base drop-shadow">0</span>
           </div>
+
           <Link
             to="/account"
-            className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-4 py-2 rounded-lg shadow transition-colors">
-            Account
+            className="bg-gradient-to-r from-indigo-500 via-indigo-600 to-indigo-700 px-6 py-2 rounded-lg text-white font-bold text-base shadow-lg hover:scale-105 hover:bg-indigo-800 transition-transform duration-300 border-2 border-indigo-700 ring-2 ring-indigo-300 focus:outline-none focus:ring-4 focus:ring-indigo-400">
+            Аккаунт
           </Link>
         </div>
       </div>
