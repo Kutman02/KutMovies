@@ -21,13 +21,13 @@ function FilterSearch() {
         type="text"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        placeholder="Search movies..."
+        placeholder="Поиск фильмов..."
         className="flex-1 bg-transparent outline-none text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 py-2 px-2"
       />
       <button
         type="button"
         className="p-2 rounded-full bg-blue-600 hover:bg-blue-700 transition-colors text-white flex items-center justify-center"
-        aria-label="Search">
+        aria-label="Поиск">
         <svg
           className="w-5 h-5"
           fill="none"

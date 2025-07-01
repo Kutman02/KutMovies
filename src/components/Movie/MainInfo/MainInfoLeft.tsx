@@ -1,6 +1,8 @@
-import { useDispatch } from 'react-redux';
-import Rating from '../Rating';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../../redux/store';
 import { addFavoritesMovie, removeFavoritesMovie } from '../../../redux/slices/favoritesSlice';
+import Rating from '../Rating';
+import { FaHeart } from 'react-icons/fa';
 
 interface FilmInfo {
   id: string;
@@ -19,24 +21,36 @@ function MainInfoLeft({ filmInfo }: MainInfoLeftProps) {
   const dataFilm = filmInfo.film;
   const dispatch = useDispatch();
 
+  // Достаём список избранных фильмов
+  const favorites = useSelector((state: RootState) => state.favorites.favoritesMovies);
+  const isFavorite = favorites.some((movie) => movie.id === dataFilm.id);
+
+  const toggleFavorite = () => {
+    if (isFavorite) {
+      dispatch(removeFavoritesMovie(dataFilm));
+    } else {
+      dispatch(addFavoritesMovie(dataFilm));
+    }
+  };
+
   return (
     <div className="w-full max-w-xl mx-auto p-6 bg-white dark:bg-gray-900 rounded-2xl shadow-lg flex flex-col gap-6 md:gap-8">
       <div className="flex items-center gap-4">
         <button
-          className="px-4 py-2 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition"
-          onClick={() => dispatch(addFavoritesMovie(dataFilm))}>
-          Favorite
-        </button>
-        <button
-          className="px-4 py-2 rounded-lg bg-red-500 text-white font-semibold hover:bg-red-600 transition"
-          onClick={() => dispatch(removeFavoritesMovie(dataFilm))}>
-          Remove Favorite
+          onClick={toggleFavorite}
+          className={`p-2 rounded-full transition-colors ${
+            isFavorite ? 'text-red-500' : 'text-gray-400'
+          } hover:scale-110`}
+          title={isFavorite ? 'Удалить из избранного' : 'Добавить в избранное'}>
+          <FaHeart size={24} />
         </button>
       </div>
+
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
         <p className="text-2xl font-bold text-gray-900 dark:text-white">{dataFilm.title}</p>
         <Rating />
       </div>
+
       <div className="flex flex-wrap gap-2">
         {dataFilm.categoryes.map((value: string, index: number) => (
           <span
@@ -46,8 +60,9 @@ function MainInfoLeft({ filmInfo }: MainInfoLeftProps) {
           </span>
         ))}
       </div>
+
       <div>
-        <p className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1">Description</p>
+        <p className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1">Описание</p>
         <p className="text-gray-700 dark:text-gray-300">{dataFilm.description}</p>
       </div>
     </div>

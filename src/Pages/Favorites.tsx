@@ -14,15 +14,14 @@ function Favorites() {
           <Filter />
         </div>
         <div className="flex flex-col lg:flex-row gap-8">
-          <div className="w-full lg:w-2/3">
+          <div className="w-full">
             <MoviesList />
           </div>
-          <aside className="hidden lg:block w-full lg:w-1/3 bg-white rounded-xl shadow-lg p-6">
-            {/* Здесь можно добавить виджеты или рекомендации */}
-            <h2 className="text-xl font-semibold mb-4">Рекомендации</h2>
-            <FavoriteList />
-          </aside>
         </div>
+        <aside className="w-full bg-white rounded-xl shadow-lg p-6 mt-12">
+          <h2 className="text-xl font-semibold mb-4">Рекомендации</h2>
+          <FavoriteList />
+        </aside>
         <div className="mt-16">
           <h2 className="text-2xl font-semibold mb-6 text-gray-800">Похожие фильмы</h2>
           <MoviesScroll />

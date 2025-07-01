@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
 function FilterCategoryes() {
-  const [status, changeStatus] = useState('Popular');
+  const [status, changeStatus] = useState('Популярные');
 
-  const filter_categoryes = ['Popular', 'Novelty', 'Featured', 'Short films'];
+  const filter_categoryes = ['Популярные', 'Новинки', 'Избранное', 'Короткометражки'];
 
   return (
     <div

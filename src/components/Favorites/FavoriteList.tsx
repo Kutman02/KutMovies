@@ -1,14 +1,12 @@
-import FavoritesCart from '../FavoritesCart/FavoritesCart';
-function FavoriteList() {
+import MovieListRec from '../Favorites/MovieListRec';
+function RecometedList() {
   return (
     <>
       {' '}
       <div className="top-movies">
-        <p>Top Rated Films</p>
-        <FavoritesCart />
-        <FavoritesCart />
+        <MovieListRec />
       </div>
     </>
   );
 }
-export default FavoriteList;
+export default RecometedList;
