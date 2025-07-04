@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
-import star from '../../assets/icons/star.png';
+//import star from '../../assets/icons/star.png';
+import { LiaStarSolid } from 'react-icons/lia';
+import { FaStar } from 'react-icons/fa';
 
 interface MoviesCardProps {
   id: string | number;
@@ -29,7 +31,7 @@ function MoviesCard(props: MoviesCardProps) {
         </div>
         <div className="absolute top-2 right-2 flex gap-1">
           {[...Array(5)].map((_, i) => (
-            <img key={i} src={star} alt="star" className="w-4 h-4" />
+            <FaStar key={i} className="w-6 h-6 text-yellow-500" />
           ))}
         </div>
       </div>

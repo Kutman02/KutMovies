@@ -1,12 +1,12 @@
 import { FaFacebookF, FaInstagram, FaYoutube, FaLinkedinIn } from 'react-icons/fa';
-
+import { Link } from 'react-router-dom';
 export default function Footer() {
   return (
     <footer className="bg-zinc-900 text-white py-10 mt-10">
       <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between gap-10">
         {/* Блок 1: Логотип и соцсети */}
         <div className="flex flex-col gap-4">
-          <h2 className="text-2xl font-bold">REACT CINEMA</h2>
+          <h2 className="text-2xl font-bold">KUT CINEMA</h2>
           <p className="text-sm text-gray-400 max-w-xs">
             Смотри лучшие фильмы онлайн в хорошем качестве — бесплатно и без регистрации.
           </p>
@@ -52,19 +52,14 @@ export default function Footer() {
             <p className="font-semibold mb-2">Сервис</p>
             <ul className="space-y-1 text-gray-400">
               <li>
-                <a href="#" className="hover:text-white">
+                <Link to="/faq" className="hover:text-white">
                   FAQ
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-white">
+                <Link to="/help" className="hover:text-white">
                   Поддержка
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white">
-                  Контакты
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -93,7 +88,7 @@ export default function Footer() {
 
       {/* Нижний блок */}
       <div className="mt-10 border-t border-gray-700 pt-4 text-center text-sm text-gray-500">
-        © 2025 React Cinema. Все права защищены.
+        © 2025 Kut Cinema. Все права защищены.
       </div>
     </footer>
   );

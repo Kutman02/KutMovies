@@ -1,18 +1,19 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { Film } from '../../types/film';
 
 // Опиши типы для фильма и состояния
 
-interface Film {
-  id: string | number;
-  title: string;
-  category: string[];
-  description: string; // ✅ добавить
-  categoryes: string[] | number; // ✅ добавить
-  aboutInfo: string[]; // ✅ добавить
-  trailerUrl: string;
-  imageUrl?: string; // добавлено для совместимости с MoviesCard
-}
+//interface Film {
+//  id: string;
+//  title: string;
+//  category: string[];
+//  description: string;
+//  categoryes: string[];
+//  aboutInfo: string[];
+//  trailerUrl: string;
+//  imageUrl?: string;
+//}
 
 interface SearchFilmState {
   film: Film | null; // film может быть объектом или null

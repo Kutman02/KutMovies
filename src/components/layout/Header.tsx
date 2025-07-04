@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
-import logo from '../../assets/icons/icon.png';
-import heart from '../../assets/icons/heart.png';
+import { FaHeart } from 'react-icons/fa';
+import { FcFilmReel } from 'react-icons/fc';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
+import { IconType } from '../../types/iconstypes'; // импортируем тип IconType
 
 export default function Header() {
   const headerHeight = 80; // высота хедера в px (можно настроить)
@@ -18,11 +19,7 @@ export default function Header() {
         <div className="max-w-7xl mx-auto flex items-center justify-between px-8 py-4 h-full">
           {/* Логотип */}
           <Link to="/" className="flex items-center gap-4 group">
-            <img
-              src={logo}
-              alt="логотип"
-              className="w-12 h-12 rounded-xl shadow-md group-hover:scale-110 transition-transform duration-300"
-            />
+            <FcFilmReel className="w-12 h-12" />
             <div className="flex flex-col leading-tight select-none">
               <p className="text-2xl font-extrabold text-gray-900 tracking-widest">KUTMOVIES</p>
               <p className="text-xs text-indigo-600 uppercase tracking-wide">Смотри везде</p>
@@ -49,10 +46,12 @@ export default function Header() {
 
           {/* Действия */}
           <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500 hover:bg-indigo-600 transition-all cursor-pointer select-none shadow-lg border-2 border-indigo-700">
-              <img src={heart} alt="избранное" className="w-6 h-6" />
+            <Link
+              to="/favorites"
+              className="flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500 hover:bg-indigo-600 transition-all cursor-pointer select-none shadow-lg border-2 border-indigo-700">
+              <FaHeart className="w-6 h-6" title="избранное" />
               <span className="text-white font-bold text-base drop-shadow">{favoritesCount}</span>
-            </div>
+            </Link>
 
             <Link
               to="/account"
