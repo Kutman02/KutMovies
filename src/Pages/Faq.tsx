@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { Link } from 'react-router-dom';
 const faqData = [
   {
     question: 'Как найти фильм?',
@@ -16,8 +16,20 @@ const faqData = [
   },
   {
     question: 'Как связаться с поддержкой?',
-    answer:
-      'Вы можете написать нам на электронную почту support@kutmovies.com или воспользоваться формой обратной связи на сайте.',
+    answer: (
+      <>
+        Вы можете написать нам на электронную почту <br />
+        <a href="mailto:support@kutmovies.com" className="text-blue-500 underline">
+          support@kutmovies.com
+        </a>{' '}
+        <br />
+        или воспользоваться формой обратной связи на сайте: <br />{' '}
+        <Link to="/help" className="text-blue-500 underline">
+          Связаться с нами
+        </Link>
+        .
+      </>
+    ),
   },
 ];
 
