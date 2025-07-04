@@ -8,7 +8,7 @@ const store = configureStore({
     favorites,
   },
 });
-//Добавил store для redux
+//Добавил store для redu
 // Тип RootState — вся структура состояния Redux
 export type RootState = ReturnType<typeof store.getState>;
 
