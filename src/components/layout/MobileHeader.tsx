@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Home, Film, Heart, User } from 'lucide-react';
+import { Home, Film, Heart, User, HelpCircle } from 'lucide-react';
 
 export default function MobileTabbar() {
   const { pathname } = useLocation();
@@ -8,7 +8,7 @@ export default function MobileTabbar() {
     { to: '/', icon: <Home size={22} />, label: 'Главная', match: '/' },
     { to: '/movies', icon: <Film size={22} />, label: 'Фильмы', match: '/movie' },
     { to: '/favorites', icon: <Heart size={22} />, label: 'Мой список', match: '/favorites' },
-    { to: '/faq', icon: <User size={22} />, label: 'Вопросы', match: '/faq' },
+    { to: '/faq', icon: <HelpCircle size={22} />, label: 'Вопросы', match: '/faq' },
     { to: '/account', icon: <User size={22} />, label: 'Аккаунт', match: '/account' },
   ];
 
